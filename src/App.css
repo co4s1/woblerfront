@@ -82,6 +82,8 @@
   background-color:#1a1a1a;
   line-height: 100px;
   text-align: center;
+  overflow-y: scroll;
+  overflow-x:hidden;
 }
 
 .outputtext{
