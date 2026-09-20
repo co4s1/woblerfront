@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 .App {
   text-align: center;
-  font-family: 'Press Start 2P', system-ui, monospace;
+  font-family: 'Poppins', sans-serif;
 }
 
 
@@ -73,7 +74,7 @@
   height: 7vh;
   width: 10vw;
   box-sizing: border-box;
-  font-family: inherit;
+  font-family: 'Press Start 2P', system-ui, monospace;
   }
 
 .outputdiv {
@@ -97,4 +98,8 @@
   display: inline-block;
   vertical-align: middle;
   line-height: normal;
+}
+
+.head {
+  font-family: 'Press Start 2P', system-ui, monospace;
 }

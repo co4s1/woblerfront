@@ -36,7 +36,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>
-          <h3>Wobler-jpt</h3>
+          <h3 className="head">Wobler-jpt</h3>
         </div>
         <div className="outputdiv">
           <span className="outputspan">
