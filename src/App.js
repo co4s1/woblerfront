@@ -14,7 +14,7 @@ function App() {
     setIsLoading(true);
     setOutput('');
     try {
-      const res = await fetch('http://localhost:8080/chat', {
+      const res = await fetch('https://woblerback.onrender.com/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: promptText }),
