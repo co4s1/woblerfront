@@ -1,25 +1,56 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState, useEffect, useRef} from 'react';
+
+
+
 
 function App() {
+  const [input, setInput] = useState('');
+  const [output, setOutput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function sendMessage(promptText) {
+    if (!promptText.trim()) return;
+    setIsLoading(true);
+    setOutput('');
+    try {
+      const res = await fetch('http://localhost:8080/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: promptText }),
+      });
+      if (!res.ok) {
+        const errText = await res.text();
+        throw new Error(errText || `Request failed: ${res.status}`);
+      }
+      const data = await res.json();
+      setOutput(data.reply);
+    } catch (err) {
+      setOutput('Something went wrong: ' + err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="outputdiv">
+          <span className="outputspan">
+            <p className="outputtext">{(output != "") ? output : 'Nothing to see here'}</p>
+          </span>
+        </div>
+        <div className="inputdiv">
+          <input className="inputinput" placeholder="Beggining of the output" onChange={e => setInput(e.target.value)}></input>
+          <button className="sendbutton" onClick={() => sendMessage(input)} disabled={isLoading}>
+            {isLoading ? '...' : 'Enter'}
+          </button>
+        </div>
+
       </header>
     </div>
   );
-}
+};
 
 export default App;
