@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import {useState, useEffect, useRef} from 'react';
+import {useState} from 'react';
 
 
 
@@ -38,7 +37,7 @@ function App() {
       <header className="App-header">
         <div className="outputdiv">
           <span className="outputspan">
-            <p className="outputtext">{(output != "") ? output : 'Nothing to see here'}</p>
+            <p className="outputtext">{(output !== "") ? output : 'Nothing to see here'}</p>
           </span>
         </div>
         <div className="inputdiv">
